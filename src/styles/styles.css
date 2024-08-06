@@ -1,0 +1,152 @@
+:root {
+    --background-color-primary: #F7F7F7;
+    --background-color-primary-dark: #f3f3f5;
+    --background-color-secondary: #5871ef;
+
+    --button-color-primary: #5871ef;
+    --button-color-primary-light: #cdd5ff;
+    --button-color-secondary: #f6f7f9;
+
+    --input-color-primary: #f6f7f9;
+
+    --text-color-primary: #141515;
+    --text-color-primary-light: #363738;
+    --text-color-secondary: #fff;
+    --text-color-tertiary: #5871ef;
+
+    --text-color-active: #141515;
+    --text-color-inactive: #777;
+
+    --text-color-placeholder: #828489;
+
+    --title-color-primary: #141515;
+    --title-color-secondary: #fff;
+
+    --border-color-primary: #f6f7f9;
+    --border-color-secondary: #5871ef;
+    --border-color-secondary-dark: #485bba;
+
+    --checkbox-color-primary: #5871ef;
+
+    --offset-base-size: 4px;
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semi-bold: 600;
+}
+
+
+
+/* text */
+
+.text {
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    color: var(--text-color-primary);
+}
+
+.text_type_small {
+    font-size: 12px;
+}
+
+.text_type_medium {
+    font-size: 14px;
+}
+
+.text_type_default {
+    font-size: 16px;
+}
+
+.text_type_large {
+    font-size: 18px;
+}
+
+.text_font-weight_regular {
+    font-weight: var(--font-weight-regular);
+}
+
+.text_font-weight_medium {
+    font-weight: var(--font-weight-medium);
+}
+
+.text_font-weight_semi-bold {
+    font-weight: var(--font-weight-semi-bold);
+}
+
+
+
+.text_color_primary {
+    color: var(--text-color-primary);
+}
+
+.text_color_primary-light {
+    color: var(--text-color-primary-light);
+}
+
+.text_color_secondary {
+    color: var(--text-color-secondary);
+}
+
+.text_color_tertiary {
+    color: var(--text-color-tertiary);
+}
+
+.text_color_active {
+    color: var(--text-color-active);
+}
+
+.text_color_inactive {
+    color: var(--text-color-inactive);
+}
+
+.text_color_placeholder {
+    color: var(--text-color-placeholder);
+}
+
+.text_text-align_center {
+    text-align: center;
+}
+
+.text_text-decoration_none {
+    text-decoration: none;
+}
+
+/* title */
+
+.title {
+    margin: 0;
+    font-weight: var(--font-weight-semi-bold);
+    letter-spacing: -0.64px;
+}
+
+.title_type_h1 {
+    font-size: 36px;
+}
+
+.title_type_h2 {
+    font-size: 32px;
+}
+
+.title_type_h3 {
+    font-size: 20px;
+}
+
+.title_color_primary {
+    color: var(--title-color-primary);
+}
+
+.title_color_secondary {
+    color: var(--title-color-secondary);
+}
+
+.title_text-align_center {
+    text-align: center;
+}
+
+html, body {
+    margin: 0px auto !important;
+    padding: 0px auto !important;
+    font-family: "Manrope";
+    background-color: var(--background-color-primary)
+}
