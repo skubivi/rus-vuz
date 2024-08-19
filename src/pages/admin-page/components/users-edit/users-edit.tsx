@@ -1,4 +1,4 @@
-import { Box } from "@mui/material"
+import { Box, useMediaQuery } from "@mui/material"
 import { FC } from "react"
 import Search from "../../../../components/search/search"
 import UsersTable from "./components/users-table/users-table"
@@ -62,8 +62,8 @@ const temp = [
     },
     {
         id: 5,
-        firstName: 'Евгений',
-        lastName: 'Попов',
+        firstName: 'Людмила',
+        lastName: 'Бабушкина',
         email: 'popovek@mail.ru',
         type: UserTypes.Teacher,
         role: Roles.NoRole,
@@ -72,12 +72,13 @@ const temp = [
 ]
 
 const UsersEdit: FC = () => {
+    const isMobile = useMediaQuery('(max-width: 1450px)')
     return (
         <Box
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 8
+                gap: isMobile ? 3.5 : 8
             }}
         >
             <Search />

@@ -1,7 +1,8 @@
-import { Box, Menu, Typography } from "@mui/material"
+import { Box, Menu, Typography, useMediaQuery } from "@mui/material"
 import { FC, useState } from "react"
 
 import ExpandSvg from '../../assets/components/edit-select/expand.svg?react'
+import ExpandMobileSvg from '../../assets/components/edit-select/expand-mobile.svg?react'
 
 interface IEditSelect {
     defaultValue: string
@@ -21,6 +22,91 @@ const EditSelect: FC<IEditSelect> = ({
         setAnchorEl(null);
     };
     const [chosen, setChosen] = useState(defaultValue)
+    const isMobile = useMediaQuery('(max-width: 1450px)')
+    if (isMobile)
+        return (
+            <>
+                <Box
+                    sx={{
+                        width: 117,
+                        height: 24,
+                        padding: '8px 12px',
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        borderRadius: 3,
+                        background: '#F3F3F5'
+                    }}
+                    onClick={handleClick}
+                >
+                    <Typography
+                        sx={{
+                            fontSize: 14,
+                            fontWeight: 600
+                        }}
+                    >
+                        {chosen}
+                    </Typography>
+                    <ExpandMobileSvg />
+                </Box>
+                <Menu
+                    anchorEl={anchorEl}
+                    open={open}
+                    onClose={handleClose}
+                    sx={{
+                        padding: 0,
+                        '& .MuiList-root': {
+                            padding: '0 !important'
+                        }
+                    }}
+                >
+                    <Box
+                        sx={{
+                            padding: 1,
+                            borderRadius: 3,
+                            background: '#F3F3F5',
+                            border: '1px solid #C9D4FF',
+                            boxShadow: '4px 4px 16px 0px rgba(0, 0, 0, 0.08)',
+                            display: 'flex',
+                            flexDirection: 'column'
+                        }}
+                    >
+                        {options.map((option, index) => (
+                            <Box
+                                sx={{
+                                    width: 150,
+                                    height: 34,
+                                    borderRadius: 2,
+                                    '&:hover': {
+                                        background: '#C8D3FE'
+                                    },
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    paddingLeft: 2.5
+                                }}
+                                key={index}
+                                onClick={() => {
+                                    setChosen(option)
+                                    handleClose()
+                                }}
+                            >
+                                <Typography
+                                    sx={{
+                                        color: '#141515',
+                                        fontSize: 12,
+                                        fontWeight: 400
+                                    }}
+                                >
+                                    {option}
+                                </Typography>
+                            </Box>
+                        ))}
+                    </Box>
+                </Menu>
+            </>
+        )
     return (
         <>
             <Box

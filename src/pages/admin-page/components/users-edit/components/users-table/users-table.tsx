@@ -1,4 +1,4 @@
-import { Box, IconButton, Typography } from "@mui/material"
+import { Box, IconButton, Typography, useMediaQuery } from "@mui/material"
 import { FC, useState } from "react"
 import TableHeader from "./components/table-header/table-header"
 import TableRow from "./components/table-row/table-row"
@@ -90,6 +90,55 @@ const UsersTable: FC<IUserTable> = ({
         }
         return result
     }
+    
+    const isMobile = useMediaQuery('(max-width: 1450px)')
+    if (isMobile)
+        return (
+            <>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        borderRadius: 2.5,
+                        background: '#fff',
+                        paddingY: 1.5,
+                    }}
+                >
+                    {
+                        users.map((user, index) => 
+                            <>
+                                <TableRow 
+                                    {...user} 
+                                    key={user.id}
+                                    openEditModal={handleOpenEditModal}
+                                    openDeleteModal={handleOpenDeleteModal}
+                                />
+                                {index !== users.length - 1 &&
+                                    <Box
+                                        key={'divider ' + user.id}
+                                        sx={{
+                                            width: 1,
+                                            height: '1px',
+                                            background: '#F6F7F9'
+                                        }}
+                                    />
+                                }
+                            </>
+                        )
+                    }
+                </Box>
+                <DeleteModal 
+                    open={openDeleteModal}
+                    onClose={handleCloseDeleteModal}
+                    {...getDeleteInfo(deleteId)}
+                />
+                <EditModal
+                    open={openEditModal}
+                    onClose={handleCloseEditModal}
+                    {...getEditInfo(editId)}
+                />
+            </>
+        )
 
     return (
         <>

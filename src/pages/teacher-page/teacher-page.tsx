@@ -3,6 +3,7 @@ import { SyntheticEvent, useState } from "react"
 import TeacherProfile from "./components/teacher-profile/teacher-profile"
 import TeacherEdit from "./components/teacher-edit/teacher-edit"
 import Actions from "../../components/actions/actions"
+import MobileTabs from "../../components/mobile-tabs/mobile-tabs"
 
 const TeacherPage = () => {
     const [tabValue, setTabValue] = useState<'profile' | 'edit' | 'actions'>('profile')
@@ -36,52 +37,24 @@ const TeacherPage = () => {
                         marginTop: 3
                     }}
                 >
-                    <Tabs
-                        value={tabValue}
-                        onChange={handleTabChange}
-                        sx={{
-                            '& .MuiTabs-indicator': {
-                                backgroundColor: '#5871EF !important'
-                            }
-                        }}
-                    >
-                        <Tab 
-                            label={
-                                <Typography
-                                    sx={{
-                                        fontSize: 12
-                                    }}
-                                >
-                                    Анкета
-                                </Typography>
-                            } 
-                            value='profile'
-                        />
-                        <Tab 
-                            label={
-                                <Typography
-                                    sx={{
-                                        fontSize: 12
-                                    }}
-                                >
-                                    Редактирование
-                                </Typography>
-                            } 
-                            value='edit'
-                        />
-                        <Tab 
-                            label={
-                                <Typography
-                                    sx={{
-                                        fontSize: 12
-                                    }}
-                                >
-                                    Журнал действий
-                                </Typography>
-                            } 
-                            value='actions'
-                        />
-                    </Tabs>
+                    <MobileTabs 
+                        options={[
+                            {
+                                value: 'profile',
+                                label: 'Анкета'
+                            },
+                            {
+                                value: 'edit',
+                                label: 'Редактирование'
+                            },
+                            {
+                                value: 'actions',
+                                label: 'Журнал действий'
+                            },
+                        ]}
+                        chosen={tabValue}
+                        changeTab={(s) => setTabValue(s as 'profile' | 'edit' | 'actions')}
+                    />
                 </Box>
                 <Box
                     sx={{

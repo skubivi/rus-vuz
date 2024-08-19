@@ -1,12 +1,13 @@
 import { TextField, useMediaQuery } from "@mui/material"
 import { FC } from "react"
 
-const StyledInput: FC<{title: string}> = ({title}) => {
+const StyledInput: FC<{title?: string, placeholder?: string}> = ({title, placeholder}) => {
     const isMobile = useMediaQuery('(max-width: 1450px)')
     if (isMobile) 
         return (
             <TextField 
                 label={title}
+                placeholder={placeholder}
                 fullWidth
                 sx={{
                     fontSize: 12,
@@ -22,8 +23,9 @@ const StyledInput: FC<{title: string}> = ({title}) => {
                         borderRadius: '7px !important'
                     },
                     '& .MuiInputBase-input': {
-                        padding: 2.5,
-                        height: '18px !important'
+                        padding: '7px !important',
+                        height: '18px !important',
+                        fontSize: 12
                     }
                 }}
             />

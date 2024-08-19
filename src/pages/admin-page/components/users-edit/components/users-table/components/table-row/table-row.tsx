@@ -1,8 +1,13 @@
-import { Box, IconButton, Typography } from "@mui/material"
+import { Box, IconButton, Typography, useMediaQuery } from "@mui/material"
 import { FC } from "react"
 
 import EditIcon from '../../../../../../../../assets/pages/admin-page/edit.svg?react'
 import DeleteIcon from '../../../../../../../../assets/pages/admin-page/delete.svg?react'
+
+import EditMobileIcon from '../../../../../../../../assets/pages/admin-page/edit-mobile.svg?react'
+import DeleteMobileIcon from '../../../../../../../../assets/pages/admin-page/delete-mobile.svg?react'
+
+import tempImg from '../../../../../../../../assets/temp/Rectangle 4467.png'
 
 interface ITableRow {
     id: number,
@@ -27,6 +32,81 @@ const TableRow: FC<ITableRow> = ({
     openEditModal,
     openDeleteModal
 }) => {
+    const isMobile = useMediaQuery('(max-width: 1450px)')
+    if (isMobile)
+        return (
+            <Box
+                sx={{
+                    display: 'flex',
+                    paddingX: 5,
+                    paddingY: 2.5,
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                }}
+            >
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        gap: 3
+                    }}
+                >
+                    <Box
+                        component='img'
+                        src={tempImg}
+                        sx={{
+                            width: 48,
+                            height: 48,
+                            borderRadius: 3
+                        }}
+                    />
+                    <Box
+                        sx={{
+                            display: 'flex',
+                            flexDirection: 'column'
+                        }}
+                    >
+                        <Typography
+                            sx={{
+                                fontSize: 14,
+                                fontWeight: 600
+                            }}
+                        >
+                            {lastName + ' ' + firstName}
+                        </Typography>
+                        <Typography
+                            sx={{
+                                fontSize: 14,
+                                fontWeight: 600
+                            }}
+                        >
+                            {`+${number[0]} (${number.slice(1, 4)}) ${number.slice(4, 7)}-${number.slice(7, 9)}-${number.slice(9)}`}
+                        </Typography>
+                    </Box>
+                </Box>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        flexDirection: 'row',
+                        gap: '2,5',
+                        alignItems: 'center',
+                        padding: 1.25
+                    }}
+                >
+                    <IconButton
+                        onClick={() => openEditModal(id)}
+                    >
+                        <EditMobileIcon />
+                    </IconButton>
+                    <IconButton
+                        onClick={() => openDeleteModal(id)}
+                    >
+                        <DeleteMobileIcon />
+                    </IconButton>
+                </Box>
+            </Box>
+        )
     return (
         <Box
             sx={{

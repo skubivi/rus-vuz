@@ -1,4 +1,4 @@
-import { Box } from "@mui/material"
+import { Box, useMediaQuery } from "@mui/material"
 import { FC } from "react"
 import TeacherProfileHeader from "../teacher-profile/components/teacher-profile-header/teacher-profile-header"
 import PersonalDataForm from "./components/personal-data-form/personal-data-form"
@@ -15,12 +15,13 @@ const TeacherEdit: FC<ITeacherEdit> = ({
     student,
     admin
 }) => {
+    const isMobile = useMediaQuery('(max-width: 1450px)')
     return (
         <Box 
             sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                gap: 8
+                gap: isMobile ? 4 : 8
             }}
         >
             <TeacherProfileHeader />
